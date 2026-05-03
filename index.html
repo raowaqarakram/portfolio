@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rao Waqar — Professional WordPress Developer & SEO Expert based in Pakistan with 6+ years of experience. Building high-performance websites that rank and convert." />
+  <meta name="keywords" content="WordPress Developer Pakistan, SEO Expert, Website Design, Web Development, Rao Waqar" />
+  <meta name="author" content="Rao Waqar" />
+  <meta property="og:title" content="Rao Waqar — WordPress Developer & SEO Expert" />
+  <meta property="og:description" content="6+ years of WordPress development & SEO expertise. Let's build something remarkable." />
+  <meta property="og:type" content="website" />
+  <title>Rao Waqar — WordPress Developer & SEO Expert</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0d0d0d;
+      --paper:     #f7f4ef;
+      --cream:     #ede9e1;
+      --accent:    #c8973a;
+      --accent2:   #2a6049;
+      --muted:     #6b6560;
+      --white:     #ffffff;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'DM Sans', sans-serif;
+      --radius:    12px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 6%;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200,151,58,0.15);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.08); }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1.5px; background: var(--accent);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--ink); color: var(--white) !important;
+      padding: 0.55rem 1.4rem; border-radius: 50px;
+      font-weight: 600 !important; transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--transition); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 6% 5rem;
+      position: relative;
+      overflow: hidden;
+      gap: 4rem;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(200,151,58,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(42,96,73,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(200,151,58,0.12); border: 1px solid rgba(200,151,58,0.3);
+      color: var(--accent); padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.6rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 em { color: var(--accent); font-style: normal; }
+    .hero-content h1 .line-break { display: block; }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 480px; margin-bottom: 2.5rem; font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-primary {
+      background: var(--ink); color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: all var(--transition);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 4px 20px rgba(13,13,13,0.2);
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,151,58,0.35); }
+    .btn-secondary {
+      background: transparent; color: var(--ink);
+      padding: 0.85rem 2rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: all var(--transition);
+      border: 2px solid var(--ink);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .stat-item { }
+    .stat-num {
+      font-family: var(--serif); font-size: 2rem; font-weight: 900;
+      color: var(--ink); line-height: 1; display: block;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 500; }
+    .hero-image {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-img-wrap {
+      position: relative; width: 100%; max-width: 500px;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+    }
+    .hero-img-wrap img { width: 100%; height: 520px; object-fit: cover; display: block; }
+    .hero-card {
+      position: absolute; bottom: -1.5rem; left: -2rem;
+      background: var(--white); border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      display: flex; align-items: center; gap: 0.8rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    .hero-card2 {
+      position: absolute; top: 2rem; right: -1.5rem;
+      background: var(--accent); color: var(--white); border-radius: var(--radius);
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 12px 30px rgba(200,151,58,0.4);
+      animation: float 4s ease-in-out infinite 2s;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .hero-card .icon { font-size: 1.8rem; }
+    .hero-card .card-text { }
+    .hero-card .card-text strong { display: block; font-size: 0.9rem; color: var(--ink); font-weight: 700; }
+    .hero-card .card-text span { font-size: 0.76rem; color: var(--muted); }
+    .hero-card2 strong { display: block; font-size: 0.85rem; font-weight: 700; }
+    .hero-card2 span { font-size: 0.76rem; opacity: 0.9; }
+    .deco-ring {
+      position: absolute; width: 320px; height: 320px;
+      border: 1.5px dashed rgba(200,151,58,0.3);
+      border-radius: 50%; top: -30px; right: -60px;
+      animation: spin 40s linear infinite;
+    }
+    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 6%; }
+    .section-tag {
+      display: inline-block; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.8rem;
+      padding: 0.3rem 0.9rem; border-left: 3px solid var(--accent);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.8px; margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1.05rem;
+      max-width: 520px; margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--ink); color: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    #about .section-tag { color: var(--accent); }
+    #about .section-title { color: var(--white); }
+    #about .section-sub { color: rgba(255,255,255,0.6); }
+    .about-img {
+      position: relative;
+    }
+    .about-img-inner {
+      width: 100%; aspect-ratio: 4/5;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    .about-img-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-badge {
+      position: absolute; bottom: 2rem; right: -2rem;
+      background: var(--accent); color: var(--white);
+      border-radius: 16px; padding: 1.2rem 1.5rem;
+      box-shadow: 0 16px 40px rgba(200,151,58,0.4);
+      text-align: center;
+    }
+    .about-badge .big { font-family: var(--serif); font-size: 2.2rem; font-weight: 900; display: block; line-height: 1; }
+    .about-badge .small { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.9; }
+    .about-body p { color: rgba(255,255,255,0.75); margin-bottom: 1.2rem; font-size: 1.02rem; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.8rem 0; }
+    .chip {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85); padding: 0.4rem 1rem;
+      border-radius: 50px; font-size: 0.82rem; font-weight: 500;
+      transition: all var(--transition);
+    }
+    .chip:hover { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .fact {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+    }
+    .fact-num { font-family: var(--serif); font-size: 1.6rem; font-weight: 900; color: var(--accent); }
+    .fact-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--cream); }
+    .services-header { text-align: center; }
+    .services-header .section-sub { margin: 0 auto 3.5rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: 20px;
+      padding: 2.2rem; position: relative; overflow: hidden;
+      transition: all var(--transition);
+      border: 1px solid rgba(200,151,58,0.12);
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.1); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .svc-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(200,151,58,0.1); display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 1.3rem;
+      transition: background var(--transition);
+    }
+    .service-card:hover .svc-icon { background: var(--accent); }
+    .svc-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .svc-desc { color: var(--muted); font-size: 0.93rem; line-height: 1.7; }
+
+    /* ── HOW I WORK ── */
+    #process { text-align: center; }
+    #process .section-sub { margin: 0 auto 3.5rem; }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1rem; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 40px; left: 12.5%; right: 12.5%; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 0;
+    }
+    .step {
+      position: relative; z-index: 1;
+      background: var(--white); border-radius: 20px; padding: 2rem 1.5rem;
+      border: 1px solid rgba(200,151,58,0.15);
+      transition: all var(--transition);
+    }
+    .step:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.09); }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--ink); color: var(--white);
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: background var(--transition);
+    }
+    .step:hover .step-num { background: var(--accent); }
+    .step-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── WHY CHOOSE ME ── */
+    #why {
+      background: var(--ink); color: var(--white);
+    }
+    #why .section-tag { color: var(--accent); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.6); }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 1.8rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: all var(--transition);
+    }
+    .why-card:hover { background: rgba(200,151,58,0.1); border-color: rgba(200,151,58,0.3); transform: translateY(-3px); }
+    .why-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(200,151,58,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .why-text h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .why-text p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+    .why-cta { margin-top: 3.5rem; text-align: center; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); }
+    #testimonials .section-title, #testimonials .section-tag { }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .testi-card {
+      background: var(--white); border-radius: 20px; padding: 2rem;
+      border: 1px solid rgba(200,151,58,0.12);
+      transition: all var(--transition); position: relative;
+    }
+    .testi-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.09); transform: translateY(-4px); }
+    .testi-quote { font-size: 2.5rem; color: var(--accent); font-family: var(--serif); line-height: 1; margin-bottom: 1rem; }
+    .testi-text { color: var(--muted); font-size: 0.93rem; line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: 1rem; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+    .testi-role { font-size: 0.78rem; color: var(--muted); }
+    .stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.8rem; }
+
+    /* ── CONTACT ── */
+    #contact {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .contact-info .section-sub { margin-bottom: 2rem; }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+    .contact-list li {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-size: 0.95rem; color: var(--muted);
+    }
+    .contact-list li .c-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(200,151,58,0.12); border: 1px solid rgba(200,151,58,0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-social { display: flex; gap: 0.8rem; }
+    .social-btn {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--ink); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: all var(--transition); text-decoration: none;
+    }
+    .social-btn:hover { background: var(--accent); transform: translateY(-3px); }
+    .contact-form { background: var(--white); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.08); border: 1px solid rgba(200,151,58,0.12); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.85rem 1.1rem; border-radius: 10px;
+      border: 1.5px solid rgba(200,151,58,0.2);
+      background: var(--paper); font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
+      outline: none; transition: border-color var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit { width: 100%; }
+    .form-note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.5);
+      text-align: center; padding: 2rem 6%; font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer .footer-top {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+    }
+    footer .footer-logo { font-family: var(--serif); font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    footer .footer-logo span { color: var(--accent); }
+    footer .footer-links { display: flex; gap: 1.5rem; }
+    footer .footer-links a { color: rgba(255,255,255,0.45); font-size: 0.82rem; transition: color var(--transition); }
+    footer .footer-links a:hover { color: var(--accent); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; padding: 7rem 6% 4rem; }
+      .hero-image { display: none; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      #about { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+      #contact { grid-template-columns: 1fr; gap: 3rem; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--paper); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 998; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; z-index: 999; }
+      section { padding: 4rem 5%; }
+      #hero { padding: 6rem 5% 3rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer .footer-top { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero-stats { gap: 1.5rem; }
+      .about-facts { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Rao<span>.</span>Waqar</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Me</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content reveal">
+    <div class="hero-badge">Available for projects</div>
+    <h1>
+      WordPress <em>Expert</em>
+      <span class="line-break">who builds sites</span>
+      <span class="line-break">that <em>rank</em> &amp; <em>convert</em></span>
+    </h1>
+    <p class="hero-sub">6+ years of crafting high-performance WordPress websites and SEO strategies that drive real business growth — based in Pakistan, serving clients worldwide.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Hire Me →</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">6+</span>
+        <span class="stat-label">Years Exp.</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">120+</span>
+        <span class="stat-label">Projects Done</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Client Satisfaction</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image reveal" style="transition-delay:0.2s">
+    <div class="deco-ring"></div>
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop&q=80" alt="Professional developer workspace" loading="eager" />
+    </div>
+    <div class="hero-card">
+      <div class="icon">🚀</div>
+      <div class="card-text">
+        <strong>Fast Delivery</strong>
+        <span>On-time, every time</span>
+      </div>
+    </div>
+    <div class="hero-card2">
+      <strong>⭐ Top Rated</strong>
+      <span>5.0 Client Reviews</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img reveal">
+    <div class="about-img-inner">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&auto=format&fit=crop&q=80" alt="Rao Waqar — Professional Developer" loading="lazy" />
+    </div>
+    <div class="about-badge">
+      <span class="big">6+</span>
+      <span class="small">Years of<br>Excellence</span>
+    </div>
+  </div>
+  <div class="about-body reveal" style="transition-delay:0.15s">
+    <span class="section-tag">About Me</span>
+    <h2 class="section-title">Turning ideas into powerful digital experiences</h2>
+    <p>I'm <strong style="color:var(--accent)">Rao Waqar</strong>, a professional WordPress Developer and SEO strategist based in Pakistan. Over the past 6 years, I've helped businesses across the globe build fast, beautiful, and search-engine-optimised websites that actually generate leads and revenue.</p>
+    <p>My approach is simple: I listen first, then I build — combining technical precision with creative design to deliver websites that stand out and perform.</p>
+    <div class="skill-chips">
+      <span class="chip">WordPress</span>
+      <span class="chip">WooCommerce</span>
+      <span class="chip">Elementor Pro</span>
+      <span class="chip">PHP & MySQL</span>
+      <span class="chip">On-Page SEO</span>
+      <span class="chip">Technical SEO</span>
+      <span class="chip">Page Speed</span>
+      <span class="chip">UI/UX Design</span>
+      <span class="chip">Gutenberg</span>
+    </div>
+    <div class="about-facts">
+      <div class="fact">
+        <div class="fact-num">120+</div>
+        <div class="fact-label">Projects Completed</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">50+</div>
+        <div class="fact-label">Happy Clients</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">15+</div>
+        <div class="fact-label">Countries Served</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">100%</div>
+        <div class="fact-label">On-time Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <span class="section-tag">What I Do</span>
+    <h2 class="section-title">Services built to grow your business</h2>
+    <p class="section-sub">From pixel-perfect design to technical SEO, I cover every dimension of your online presence.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-icon">⚡</div>
+      <h3 class="svc-title">WordPress Development</h3>
+      <p class="svc-desc">Custom WordPress websites built from the ground up — fast, secure, and tailored to your exact business needs. Whether it's a blog, portfolio, or enterprise site, I deliver quality code.</p>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.1s">
+      <div class="svc-icon">🎨</div>
+      <h3 class="svc-title">Website Design</h3>
+      <p class="svc-desc">Conversion-focused, modern designs that look stunning on all devices. I craft user experiences that guide visitors toward taking action — built for beauty and results.</p>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="svc-icon">📈</div>
+      <h3 class="svc-title">SEO Services</h3>
+      <p class="svc-desc">Comprehensive on-page and technical SEO strategies that boost your rankings on Google. Keyword research, content optimisation, link building, and in-depth reporting.</p>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.3s">
+      <div class="svc-icon">🛒</div>
+      <h3 class="svc-title">WooCommerce Stores</h3>
+      <p class="svc-desc">Fully-featured online stores with seamless checkout, payment gateways, inventory management, and optimised product pages that convert browsers into buyers.</p>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.1s">
+      <div class="svc-icon">🔧</div>
+      <h3 class="svc-title">Website Maintenance</h3>
+      <p class="svc-desc">Ongoing support, plugin updates, security monitoring, regular backups, and uptime tracking to keep your website safe, current, and running at peak performance.</p>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="svc-icon">🚀</div>
+      <h3 class="svc-title">Speed Optimisation</h3>
+      <p class="svc-desc">Transform slow, sluggish sites into lightning-fast experiences. Caching, image compression, code minification, and Core Web Vitals improvements for better rankings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section id="process">
+  <div class="reveal">
+    <span class="section-tag">My Process</span>
+    <h2 class="section-title">How I turn your vision into reality</h2>
+    <p class="section-sub">A clear, transparent workflow that keeps you informed at every step — no surprises, just results.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Discovery</h3>
+      <p class="step-desc">We discuss your goals, target audience, and requirements. I ask the right questions so I understand exactly what success looks like for you.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.1s">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Strategy & Design</h3>
+      <p class="step-desc">I plan the site architecture, wireframes, and visual direction — creating designs that reflect your brand and convert your visitors.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.2s">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Development</h3>
+      <p class="step-desc">Clean, fast, and SEO-optimised code. I build your website with attention to every detail, keeping you updated throughout the process.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.3s">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Launch & Support</h3>
+      <p class="step-desc">After thorough testing, your site goes live. I provide post-launch support and guidance to ensure a smooth takeoff and long-term success.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE ME -->
+<section id="why">
+  <div class="reveal">
+    <span class="section-tag">Why Choose Me</span>
+    <h2 class="section-title">Your competitive advantage starts here</h2>
+    <p class="section-sub">I don't just build websites — I build business tools designed to generate real, measurable results.</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-text">
+        <h4>6 Years of Proven Expertise</h4>
+        <p>Deep, battle-tested experience across hundreds of WordPress projects — from simple landing pages to complex custom platforms.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-text">
+        <h4>Fast, Reliable Delivery</h4>
+        <p>I respect your timeline. Projects are delivered on schedule with regular progress updates and zero last-minute surprises.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔍</div>
+      <div class="why-text">
+        <h4>SEO-First Development</h4>
+        <p>Every site I build is optimised for search engines from day one — technical SEO baked in, not bolted on as an afterthought.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💬</div>
+      <div class="why-text">
+        <h4>Clear Communication</h4>
+        <p>I keep you informed at every stage. No technical jargon, no ghosting — just honest, responsive communication throughout.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📱</div>
+      <div class="why-text">
+        <h4>Mobile-First Approach</h4>
+        <p>Over 60% of web traffic is mobile. Every site I build is responsive, fast, and pixel-perfect on all screen sizes.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-text">
+        <h4>Competitive Pricing</h4>
+        <p>Premium quality without the premium agency price tag. Maximum value, transparent pricing, and no hidden fees.</p>
+      </div>
+    </div>
+  </div>
+  <div class="why-cta reveal">
+    <a href="#contact" class="btn-primary" style="background:var(--accent);box-shadow:0 8px 30px rgba(200,151,58,0.4)">Start Your Project →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal" style="text-align:center">
+    <span class="section-tag">Client Reviews</span>
+    <h2 class="section-title">What clients say about my work</h2>
+    <p class="section-sub" style="margin:0 auto 3.5rem">Real feedback from real clients who trusted me with their digital presence.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Rao delivered an exceptional WordPress website for our business. The design was stunning, it loaded incredibly fast, and he even optimised it for SEO. Our organic traffic doubled within 3 months!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">JM</div>
+        <div>
+          <div class="testi-name">James Mitchell</div>
+          <div class="testi-role">CEO, TechVentures UK</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.1s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Working with Rao was a pleasure from start to finish. He understood our vision perfectly, communicated clearly, and the final WooCommerce store exceeded our expectations. Highly recommended!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SA</div>
+        <div>
+          <div class="testi-name">Sarah Al-Amin</div>
+          <div class="testi-role">Founder, Luxe Boutique</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.2s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Our website was painfully slow. Rao optimised it and cut our load time from 8 seconds to under 1.5 seconds. The impact on conversions was immediate. Best investment we've made this year.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <div class="testi-name">Robert Kim</div>
+          <div class="testi-role">Marketing Director, NovaSaaS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Let's build something great together</h2>
+    <p class="section-sub">Ready to take your online presence to the next level? Tell me about your project and let's make it happen.</p>
+    <ul class="contact-list">
+      <li>
+        <div class="c-icon">📍</div>
+        <span>Punjab, Pakistan (Available Worldwide)</span>
+      </li>
+      <li>
+        <div class="c-icon">✉️</div>
+        <span>hello@raowaqar.com</span>
+      </li>
+      <li>
+        <div class="c-icon">⏱️</div>
+        <span>Response within 24 hours</span>
+      </li>
+    </ul>
+    <div class="contact-social">
+      <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+      <a href="#" class="social-btn" aria-label="GitHub">gh</a>
+      <a href="#" class="social-btn" aria-label="Twitter/X">𝕏</a>
+      <a href="#" class="social-btn" aria-label="Upwork">up</a>
+    </div>
+  </div>
+
+  <div class="contact-form reveal" style="transition-delay:0.15s">
+    <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">Send a Message</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="John Smith" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="john@company.com" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="service">Service Needed</label>
+      <select id="service">
+        <option value="">— Select a service —</option>
+        <option>WordPress Development</option>
+        <option>Website Design</option>
+        <option>SEO Services</option>
+        <option>WooCommerce Store</option>
+        <option>Speed Optimisation</option>
+        <option>Website Maintenance</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="budget">Project Budget</label>
+      <select id="budget">
+        <option value="">— Select budget range —</option>
+        <option>Under $500</option>
+        <option>$500 – $1,000</option>
+        <option>$1,000 – $3,000</option>
+        <option>$3,000 – $5,000</option>
+        <option>$5,000+</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Project Details</label>
+      <textarea id="message" placeholder="Tell me about your project, goals, and timeline..."></textarea>
+    </div>
+    <button class="btn-primary form-submit" onclick="handleSubmit(event)">Send Message & Get a Quote →</button>
+    <p class="form-note">🔒 Your information is kept private. No spam, ever.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">Rao<span>.</span>Waqar</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <p>© 2025 Rao Waqar. All rights reserved. WordPress Developer & SEO Expert — Pakistan.</p>
+</footer>
+
+<script>
+  // NAV scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Trigger hero reveals immediately
+  setTimeout(() => {
+    document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+
+  // Form handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '✅ Message Sent! I will reply within 24h.';
+    btn.style.background = 'var(--accent2)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message & Get a Quote →';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ink)' : '';
+    });
+  });
+</script>
+</body>
+</html>
