@@ -918,53 +918,84 @@
     document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
   }, 100);
 
-  // Form handler — sends to Formspree for email notification
+  // Form handler — Formspree only, no mailto, no email app
   async function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target;
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
     const service = document.getElementById('service').value;
-    const budget = document.getElementById('budget').value;
+    const budget  = document.getElementById('budget').value;
     const message = document.getElementById('message').value.trim();
 
+    // Basic validation
     if (!name || !email || !message) {
-      btn.textContent = 'Please fill in Name, Email & Message';
-      btn.style.background = '#c0392b';
-      setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 3000);
+      showFormStatus('error', 'Please fill in your Name, Email, and Message.');
+      return;
+    }
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
+      showFormStatus('error', 'Please enter a valid email address.');
       return;
     }
 
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Sending…';
     btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    // ── REPLACE the URL below with your Formspree endpoint ──
+    // Steps: go to formspree.io → New Form → paste raobscs@gmail.com → copy the endpoint URL
+    const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
 
     try {
-      const res = await fetch('https://formspree.io/f/raobscs@gmail.com', {
+      const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ name, email, service, budget, message })
       });
+
       if (res.ok) {
-        btn.textContent = 'Sent! I will reply within 24 hours.';
-        btn.style.background = 'var(--accent2)';
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
+        showFormStatus('success', 'Message sent! I will get back to you within 24 hours.');
+        document.getElementById('name').value    = '';
+        document.getElementById('email').value   = '';
         document.getElementById('service').value = '';
-        document.getElementById('budget').value = '';
+        document.getElementById('budget').value  = '';
         document.getElementById('message').value = '';
       } else {
-        throw new Error('Failed');
+        const data = await res.json();
+        const errMsg = (data.errors && data.errors[0] && data.errors[0].message) || 'Submission failed. Please try again.';
+        showFormStatus('error', errMsg);
       }
-    } catch {
-      // Fallback: open mailto
-      const subject = encodeURIComponent('Quote Request from ' + name);
-      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\nBudget: ' + budget + '\n\n' + message);
-      window.location.href = 'mailto:raobscs@gmail.com?subject=' + subject + '&body=' + body;
-      btn.textContent = 'Opening your email app...';
-      btn.style.background = 'var(--accent)';
+    } catch (err) {
+      showFormStatus('error', 'Network error. Please check your connection and try again.');
     }
 
-    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.disabled = false; }, 5000);
+    btn.textContent  = 'Send Message →';
+    btn.disabled     = false;
+    btn.style.opacity = '1';
+  }
+
+  function showFormStatus(type, text) {
+    let box = document.getElementById('form-status');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'form-status';
+      box.style.cssText = 'margin-top:1rem;padding:0.85rem 1.1rem;border-radius:10px;font-size:0.9rem;font-weight:500;';
+      document.querySelector('.contact-form').appendChild(box);
+    }
+    if (type === 'success') {
+      box.style.background = 'rgba(42,96,73,0.12)';
+      box.style.border     = '1.5px solid rgba(42,96,73,0.35)';
+      box.style.color      = '#1e5c3a';
+      box.textContent      = '✅ ' + text;
+    } else {
+      box.style.background = 'rgba(192,57,43,0.08)';
+      box.style.border     = '1.5px solid rgba(192,57,43,0.3)';
+      box.style.color      = '#c0392b';
+      box.textContent      = '⚠️ ' + text;
+    }
+    box.style.display = 'block';
+    setTimeout(() => { if (type !== 'success') box.style.display = 'none'; }, 6000);
   }
 
   // Active nav highlight
