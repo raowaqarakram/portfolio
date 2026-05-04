@@ -352,6 +352,7 @@
     #testimonials { background: var(--cream); }
     #testimonials .section-title, #testimonials .section-tag { }
     .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .testi-wide { grid-column: 1 / -1; }
     .testi-card {
       background: var(--white); border-radius: 20px; padding: 2rem;
       border: 1px solid rgba(200,151,58,0.12);
@@ -702,7 +703,7 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS_START -->
 <section id="testimonials">
   <div class="reveal" style="text-align:center">
     <span class="section-tag">Client Reviews</span>
@@ -713,36 +714,84 @@
     <div class="testi-card reveal">
       <div class="stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">Rao delivered an exceptional WordPress website for our business. The design was stunning, it loaded incredibly fast, and he even optimised it for SEO. Our organic traffic doubled within 3 months!</p>
+      <p class="testi-text">I hired Waqar A. several times to complete responsive web dev projects and have been considerably impressed every time. Highly recommend.</p>
       <div class="testi-author">
-        <div class="testi-avatar">JM</div>
+        <div class="testi-avatar">CJ</div>
         <div>
-          <div class="testi-name">James Mitchell</div>
-          <div class="testi-role">CEO, TechVentures UK</div>
+          <div class="testi-name">Clent Jewell</div>
+          <div class="testi-role">Verified Client</div>
         </div>
       </div>
     </div>
     <div class="testi-card reveal" style="transition-delay:0.1s">
       <div class="stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">Working with Rao was a pleasure from start to finish. He understood our vision perfectly, communicated clearly, and the final WooCommerce store exceeded our expectations. Highly recommended!</p>
+      <p class="testi-text">Waqar is an excellent resource and great addition to support your web development! He was able to complete all our requests with WP, Elementor, SEO and other significant functions of our website.</p>
       <div class="testi-author">
-        <div class="testi-avatar">SA</div>
+        <div class="testi-avatar">SH</div>
         <div>
-          <div class="testi-name">Sarah Al-Amin</div>
-          <div class="testi-role">Founder, Luxe Boutique</div>
+          <div class="testi-name">Shaahul Hameed</div>
+          <div class="testi-role">Verified Client</div>
         </div>
       </div>
     </div>
     <div class="testi-card reveal" style="transition-delay:0.2s">
       <div class="stars">★★★★★</div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">Our website was painfully slow. Rao optimised it and cut our load time from 8 seconds to under 1.5 seconds. The impact on conversions was immediate. Best investment we've made this year.</p>
+      <p class="testi-text">Waqar was very easy to work with, went above and beyond to get the job done. Pleasant and personable too.</p>
       <div class="testi-author">
-        <div class="testi-avatar">RK</div>
+        <div class="testi-avatar">HA</div>
         <div>
-          <div class="testi-name">Robert Kim</div>
-          <div class="testi-role">Marketing Director, NovaSaaS</div>
+          <div class="testi-name">Hatty</div>
+          <div class="testi-role">Verified Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.1s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Waqar did an excellent job with our website updates! He was efficient, detail-oriented, and ensured everything was completed to a high standard. Communication was smooth, and he delivered exactly what we needed.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">BN</div>
+        <div>
+          <div class="testi-name">Bonita Neilson</div>
+          <div class="testi-role">Verified Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.2s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Waqar did a great job with a Web Development Project. Would definitely recommend him.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RW</div>
+        <div>
+          <div class="testi-name">Rhodri Williams</div>
+          <div class="testi-role">Verified Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.3s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">The developer successfully resolved a challenging problem that spanned WordPress, a contact form, SMTP and DNS.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">KS</div>
+        <div>
+          <div class="testi-name">Kit Sadgrove</div>
+          <div class="testi-role">Verified Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card testi-wide reveal" style="transition-delay:0.1s">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Waqar worked tirelessly on one of my problematic websites. He was very patient &amp; kind in our interactions, despite the frustrations that frequently arose. He is very knowledgeable and was able to do what needed to be done to fix the sites. I highly recommend him for any IT concerns &amp; he will provide a very smooth &amp; pleasant experience in return.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ER</div>
+        <div>
+          <div class="testi-name">Erika Ryles</div>
+          <div class="testi-role">Verified Client</div>
         </div>
       </div>
     </div>
@@ -762,7 +811,7 @@
       </li>
       <li>
         <div class="c-icon">✉️</div>
-        <span>hello@raowaqar.com</span>
+        <a href="mailto:raobscs@gmail.com" style="color:inherit;text-decoration:none">raobscs@gmail.com</a>
       </li>
       <li>
         <div class="c-icon">⏱️</div>
@@ -770,15 +819,14 @@
       </li>
     </ul>
     <div class="contact-social">
-      <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-      <a href="#" class="social-btn" aria-label="GitHub">gh</a>
-      <a href="#" class="social-btn" aria-label="Twitter/X">𝕏</a>
-      <a href="#" class="social-btn" aria-label="Upwork">up</a>
+      <a href="https://www.facebook.com/waqarakramrao/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">f</a>
+      <a href="https://www.linkedin.com/in/raowaqar/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">in</a>
+      <a href="https://www.upwork.com/freelancers/~017e2c022ea434d801" target="_blank" rel="noopener" class="social-btn" aria-label="Upwork">up</a>
     </div>
   </div>
 
   <div class="contact-form reveal" style="transition-delay:0.15s">
-    <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">Send a Message</h3>
+    <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">Get a Quote</h3>
     <div class="form-row">
       <div class="form-group">
         <label for="name">Your Name</label>
@@ -817,7 +865,7 @@
       <label for="message">Project Details</label>
       <textarea id="message" placeholder="Tell me about your project, goals, and timeline..."></textarea>
     </div>
-    <button class="btn-primary form-submit" onclick="handleSubmit(event)">Send Message & Get a Quote →</button>
+    <button class="btn-primary form-submit" onclick="handleSubmit(event)">Send Message →</button>
     <p class="form-note">🔒 Your information is kept private. No spam, ever.</p>
   </div>
 </section>
@@ -833,7 +881,7 @@
       <a href="#contact">Contact</a>
     </div>
   </div>
-  <p>© 2025 Rao Waqar. All rights reserved. WordPress Developer & SEO Expert — Pakistan.</p>
+  <p>© 2026 Rao Waqar. All rights reserved.</p>
 </footer>
 
 <script>
@@ -870,18 +918,53 @@
     document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
   }, 100);
 
-  // Form handler
-  function handleSubmit(e) {
+  // Form handler — sends to Formspree for email notification
+  async function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target;
-    btn.textContent = '✅ Message Sent! I will reply within 24h.';
-    btn.style.background = 'var(--accent2)';
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const budget = document.getElementById('budget').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      btn.textContent = 'Please fill in Name, Email & Message';
+      btn.style.background = '#c0392b';
+      setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 3000);
+      return;
+    }
+
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Send Message & Get a Quote →';
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 4000);
+
+    try {
+      const res = await fetch('https://formspree.io/f/raobscs@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, service, budget, message })
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent! I will reply within 24 hours.';
+        btn.style.background = 'var(--accent2)';
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('service').value = '';
+        document.getElementById('budget').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      // Fallback: open mailto
+      const subject = encodeURIComponent('Quote Request from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\nBudget: ' + budget + '\n\n' + message);
+      window.location.href = 'mailto:raobscs@gmail.com?subject=' + subject + '&body=' + body;
+      btn.textContent = 'Opening your email app...';
+      btn.style.background = 'var(--accent)';
+    }
+
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.disabled = false; }, 5000);
   }
 
   // Active nav highlight
